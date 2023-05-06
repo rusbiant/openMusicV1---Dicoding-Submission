@@ -24,7 +24,7 @@ class AuthenticationsService {
     const result = await this._pool.query(query);
 
     if (!result.rows.length) {
-      throw new InvariantError('refresh token tidak valid');
+      throw new InvariantError('Refresh token tidak valid');
     }
   }
 

@@ -39,7 +39,7 @@ class PlaylistsService {
 
   async getPlaylistById(playlistId) {
     const query = {
-      text: 'SELECT * FROM playlist WHERE id = $1',
+      text: `SELECT * FROM playlist WHERE id = $1`,
       values: [playlistId],
     };
 
@@ -109,7 +109,9 @@ class PlaylistsService {
       name: resultPlaylist.rows[0].name,
       username: resultUser.rows[0].username,
       songs: resultSongs.rows,
-    };
+    }; 
+
+
   }
 
   async deleteSongFromPlaylist(playlistId, songId) {

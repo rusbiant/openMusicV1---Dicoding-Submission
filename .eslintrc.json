@@ -14,6 +14,6 @@
         "no-console":"off",
         "no-underscore-dangle": "off",
         "camelcase": "off",
-        "quotes": ["error", "single", { "allowTemplateLiterals": true }]
+        "max-len": ["error", 120]
     }
 }
