@@ -19,9 +19,8 @@
     "nodemon": "^2.0.20"
   },
   "dependencies": {
-    "@hapi/hapi": "^20.2.0",
-    "@hapi/jwt": "^2.1.0",
-    "amqplib": "^0.8.0",
+    "@hapi/hapi": "^21.1.0",
+    "@hapi/jwt": "^3.2.0",
     "bcrypt": "^5.1.0",
     "dotenv": "^16.0.3",
     "joi": "^17.7.0",

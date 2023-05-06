@@ -48,10 +48,9 @@ class AuthenticationsHandler {
         return response;
       }
 
-      // Server Error
       const response = h.response({
         status: 'error',
-        message: 'maaf,  terjadi kesalahan pada server kami',
+        message: 'maaf, terjadi kegagalan pada server kami',
       });
       response.code(500);
       console.error(error);
@@ -67,7 +66,7 @@ class AuthenticationsHandler {
       await this._authenticationsService.verifyRefreshToken(refreshToken);
       const { id } = this._tokenManager.verifyRefreshToken(refreshToken);
 
-      const accessToken = this._tokenManager.generateRefreshToken({ id });
+      const accessToken = this._tokenManager.generateAccessToken({ id });
       return {
         status: 'success',
         message: 'access token berhasil diperbarui',
@@ -85,10 +84,9 @@ class AuthenticationsHandler {
         return response;
       }
 
-      // Server Error
       const response = h.response({
         status: 'error',
-        message: 'maaf,  terjadi kesalahan pada server kami',
+        message: 'maaf, terjadi kegagalan pada server kami',
       });
       response.code(500);
       console.error(error);
@@ -102,10 +100,11 @@ class AuthenticationsHandler {
 
       const { refreshToken } = request.payload;
       await this._authenticationsService.verifyRefreshToken(refreshToken);
-      await this._authenticationsService.deleteRefreshToken(refreshToken);
+      await this._authenticationsService.deleteAuthenticationHandler(refreshToken);
+
       return {
         status: 'success',
-        message: 'refresh token berhasil dihapus',
+        message: 'refresh token berhasil di hapus',
       };
     } catch (error) {
       if (error instanceof ClientError) {
@@ -117,10 +116,9 @@ class AuthenticationsHandler {
         return response;
       }
 
-      // Server Error
       const response = h.response({
         status: 'error',
-        message: 'maaf,  terjadi kesalahan pada server kami',
+        message: 'maaf, terjadi kegagalan pada server kami',
       });
       response.code(500);
       console.error(error);
