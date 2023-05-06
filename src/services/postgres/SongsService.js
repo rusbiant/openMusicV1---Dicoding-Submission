@@ -39,17 +39,17 @@ class SongsService {
     const preValues = [];
 
     if (title) {
-      preText += ` WHERE title ILIKE '%' ||$1||'%'`;
+      preText += " WHERE title ILIKE '%' || $1 || '%'";
       preValues.push(title);
     }
 
     if (!title && performer) {
-      preText += ` WHERE performer ILIKE '%' ||$1|| '%'`;
+      preText += " WHERE performer ILIKE '%' || $1 || '%'";
       preValues.push(performer);
     }
 
     if (title && performer) {
-      preText += ` AND performer ILIKE '%' ||$2|| '%'`;
+      preText += " AND performer ILIKE '%' || $2 || '%'";
       preValues.push(performer);
     }
 
@@ -86,7 +86,8 @@ class SongsService {
   }) {
     const updatedAt = new Date().toISOString();
     const query = {
-      text: 'UPDATE songs SET title=$1, year=$2, performer=$3, genre=$4, duration=$5, "albumId"=$6, updated_at=$7 WHERE id=$8 RETURNING id',
+      text: `UPDATE songs SET title=$1, year=$2, performer=$3, genre=$4, duration=$5, "albumId"=$6, updated_at=$7
+      WHERE id=$8 RETURNING id`,
       values: [title, year, performer, genre, duration, albumId, updatedAt, id],
     };
     const result = await this._pool.query(query);
