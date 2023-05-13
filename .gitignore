@@ -1,1 +1,4 @@
 node_modules
+src/api/uploads/file/images
+.env
+.prod.env
