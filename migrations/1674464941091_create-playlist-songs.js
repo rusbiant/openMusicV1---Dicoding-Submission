@@ -24,7 +24,7 @@ exports.up = (pgm) => {
 
 exports.down = (pgm) => {
   pgm.dropConstraint('playlist_songs', 'fk_playlist_songs_id.songs_id');
-  pgm.dropConstraint('playlistsongs', 'fk_playlist_playlist_id.playlist_id');
+  pgm.dropConstraint('playlist_songs', 'fk_playlist_playlist_id.playlist_id');
   pgm.dropTable('playlist_songs');
 };
 

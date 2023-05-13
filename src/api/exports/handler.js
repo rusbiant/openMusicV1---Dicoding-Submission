@@ -26,7 +26,7 @@ class ExportsHandler {
       await this._producerService.sendMessage('export:playlists', JSON.stringify(message));
       const response = h.response({
         status: 'success',
-        message: 'Permintaan Anda dalam antrian',
+        message: 'Permintaan Anda sedang kami proses',
       });
       response.code(201);
       return response;
